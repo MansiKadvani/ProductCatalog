@@ -1,0 +1,168 @@
+﻿@model ProductCatalog.Models.ProductModel
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Product Details</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: "Segoe UI", Arial, sans-serif;
+            color: #1e293b;
+        }
+
+        .page {
+            max-width: 900px;
+            margin: 55px auto;
+            padding: 0 20px;
+        }
+
+        .product-card {
+            display: flex;
+            background: white;
+            border: 1px solid #e8edf5;
+            border-radius: 18px;
+            overflow: hidden;
+            box-shadow: 0 12px 40px rgba(15, 23, 42, 0.06);
+        }
+
+        .image-section {
+            width: 45%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 35px;
+            border-right: 1px solid #eef2f7;
+        }
+
+            .image-section img {
+                width: 100%;
+                max-width: 280px;
+                height: 280px;
+                object-fit: contain;
+                mix-blend-mode: multiply;
+            }
+
+        .details-section {
+            flex: 1;
+            padding: 40px;
+        }
+
+        .label {
+            display: inline-block;
+            background: #eff6ff;
+            color: #2563eb;
+            padding: 7px 12px;
+            border-radius: 5px;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 15px;
+        }
+
+        h1 {
+            color: #111827;
+            font-size: 30px;
+            line-height: 1.3;
+            margin: 0 0 18px;
+            letter-spacing: -0.7px;
+        }
+
+        .price {
+            color: #0f766e;
+            font-size: 28px;
+            font-weight: 700;
+            margin: 0 0 25px;
+        }
+
+        .divider {
+            border: none;
+            border-top: 1px solid #e8edf5;
+            margin: 25px 0;
+        }
+
+        .info-title {
+            font-size: 12px;
+            color: #64748b;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 9px;
+        }
+
+        .description {
+            color: #475569;
+            font-size: 15px;
+            line-height: 1.8;
+            margin: 0 0 24px;
+            overflow-wrap: anywhere;
+        }
+
+        .quantity {
+            display: inline-block;
+            background: #f1f5f9;
+            color: #334155;
+            padding: 8px 13px;
+            border-radius: 6px;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-top: 30px;
+            background: #2563eb;
+            color: white;
+            padding: 13px 20px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 600;
+            transition: 0.2s;
+        }
+
+            .back-link:hover {
+                background: #1d4ed8;
+                box-shadow: 0 5px 15px rgba(37, 99, 235, 0.2);
+                transform: translateY(-1px);
+            }
+    </style>
+</head>
+<body>
+    <div class="page">
+
+        <div class="product-card">
+            <div class="image-section">
+                <img src="@Model.Image" width="200" height="200" />
+            </div>
+
+            <div class="details-section">
+                <div class="label">Product Information</div>
+
+                <h1>@Model.Name</h1>
+
+                <p class="price">@Model.Price</p>
+
+                <hr class="divider" />
+
+                <div class="info-title">Description</div>
+                <p class="description">@Model.Description</p>
+
+                <div class="info-title">Available Quantity</div>
+                <p class="quantity">@Model.Quantity</p>
+
+                <br />
+
+                @Html.ActionLink("← Back to Products", "Index", "Product", null, new { @class = "back-link" })
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
